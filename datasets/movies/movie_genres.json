@@ -1,0 +1,50 @@
+[
+  {
+    "euuid": "900d69b6-60f4-44f7-84ed-2eb1fa9e9d15",
+    "name": "Action"
+  },
+  {
+    "euuid": "110c7621-8a3d-4ccc-b9fb-596441950625",
+    "name": "Comedy"
+  },
+  {
+    "euuid": "a2ecd81f-9b1e-4cf0-b640-a5cceebf0783",
+    "name": "Drama"
+  },
+  {
+    "euuid": "aaf5c5ab-7104-44a8-8323-1374de4ccf0b",
+    "name": "Horror"
+  },
+  {
+    "euuid": "af09a1ba-24c8-44f0-b7eb-833e2262430e",
+    "name": "Sci-Fi"
+  },
+  {
+    "euuid": "5f916c47-642a-415b-a237-7a2966db158e",
+    "name": "Romance"
+  },
+  {
+    "euuid": "6174e720-e6ea-44af-88d5-228a5ef89ec2",
+    "name": "Thriller"
+  },
+  {
+    "euuid": "22b722bc-0f3c-4f9f-9ea0-300f5afd478a",
+    "name": "Fantasy"
+  },
+  {
+    "euuid": "f541399c-d371-45d6-9b76-dea9728e6845",
+    "name": "Adventure"
+  },
+  {
+    "euuid": "d6f09381-1304-4515-b266-9ab3b1a6cbfa",
+    "name": "Documentary"
+  },
+  {
+    "euuid": "493c911c-fe49-4cb6-be32-d31fd9f0775e",
+    "name": "Animation"
+  },
+  {
+    "euuid": "de6e51a8-00df-4c02-b285-99d27016cf10",
+    "name": "Mystery"
+  }
+]

@@ -1,0 +1,14 @@
+node_modules/
+.DS_Store
+.shadow-cljs/
+.cpcache
+.env
+.lsp/
+.nrepl-port
+.vagrant/
+.env.*
+.venv
+.clj-kondo
+eywa.json
+eywa.edn
+
