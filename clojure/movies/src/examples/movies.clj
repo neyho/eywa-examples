@@ -57,22 +57,27 @@
        :user "postgres"
        :max-connections 20}))
 
+  ;; To build up database
   (core/initialize db)
 
 
+  ;; Add new superuser
   (core/set-superuser
     db
     {:username "admin"
      :password "admin"})
 
 
+  ;; Starts EYWA Core server
   (core/start db)
 
 
-  ;; navigate ot https://my.eywaonline.com/
 
+  ;; Import data
   (time (all))
 
+  ;; navigate ot https://my.eywaonline.com/
+  ;; and use admin admin to login
 
   (time
     (dataset/search-entity
