@@ -23,7 +23,7 @@ async def search_users():
 async def delete_movies_dataset():
     return await eywa.graphql("""
     mutation {
-        deleteDataset(name:"Movies Example")
+        deleteDataset(euuid:"6b48570e-e629-45f7-b118-b27239690a05")
     }
     """)
 
@@ -147,6 +147,70 @@ async def import_data():
     print ('Imported User ratings')
 
 
+
+async def search_movies():
+    return await eywa.graphql("""
+    {
+      searchMovie(_limit: 10) {
+        title
+        _count {
+          all: movie_ratings
+          good: movie_ratings(_where: {value: {_ge: 8}})
+          bad: movie_ratings(_where: {value: {_le: 4}})
+        }
+        _agg {
+          movie_ratings {
+            _avg {
+              value
+            }
+          }
+        }
+        movie_ratings {
+          value
+          review
+        }
+        actors (_limit:10) {
+          name
+          birth_year
+        }
+      }
+    } 
+    """)
+
+
+async def search_actors():
+    return await eywa.graphql("""
+   {
+      searchMovieActor(_limit: 10) {
+        name
+        birth_year
+        movies(_limit: 5) {
+          title
+          _agg {
+            movie_ratings {
+              _avg {
+                value
+              }
+            }
+          }
+          _count {
+            all_reviews: movie_ratings
+            good_reviews: movie_ratings(_where: {value: {_ge: 7}})
+            bad_reviews: movie_ratings(_where: {value: {_le: 4}})
+          }
+        }
+      }
+    } 
+    """)
+
+
+async def bad_query():
+    return await eywa.graphql("""
+    {
+        veryBadQuery(error:"Always")
+    }
+    """)
+
     
 
 
@@ -162,6 +226,10 @@ async def main():
     elif action == "import":
         await import_data()
         print("Imported Movies data")
+    elif action == "show_movies":
+        print(await search_movies())
+    elif action == "show_actors":
+        print(await search_actors())
     else:
         print("Unknown command!")
     eywa.exit()
