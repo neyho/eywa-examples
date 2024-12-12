@@ -36,6 +36,7 @@ let import_client = async (data) => {
   }
 }
 
+
 let delete_client = async (data) => {
   try {
     console.log("EUUID: " + data.euuid)
@@ -52,8 +53,6 @@ let delete_client = async (data) => {
     return false
   }
 }
-
-
 
 
 (async () => {
