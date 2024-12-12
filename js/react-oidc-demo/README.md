@@ -29,7 +29,7 @@ on EYWA IAM module. When authorized, you can interact with EYWA through scripts.
 
 #### Import React Example Client
 ```
-eywa run -c "node import.js"
+eywa run -c "node init.js"
 ```
 eywa run -c marks command that eywa client will run. By running this command, eywa client will use
 previously authorized user credentials to connect to eywa and run import.js script. import.js script
