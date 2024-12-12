@@ -230,6 +230,8 @@ async def main():
         print(await search_movies())
     elif action == "show_actors":
         print(await search_actors())
+    elif action == "error":
+        print(await bad_query())
     else:
         print("Unknown command!")
     eywa.exit()
