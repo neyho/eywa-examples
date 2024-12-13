@@ -5,8 +5,6 @@ import numpy as np
 import sys
 
 
-
-
 async def search_users():
     return await eywa.graphql("""{
     searchUser (_limit:2000) {
@@ -29,9 +27,9 @@ async def delete_movies_dataset():
 
 
 async def deploy_movies_dataset():
-    dataset=None
+    dataset = None
     with open("../../datasets/Movies_Example_0_2.json") as file:
-        dataset=file.read()
+        dataset = file.read()
     return await eywa.graphql("""
     mutation ($dataset: Transit) {
         importDataset(dataset:$dataset) {
@@ -57,7 +55,7 @@ async def import_movies():
         }
     }
     """,
-    {"movies": load_dataset("movies")})
+                              {"movies": load_dataset("movies")})
 
 
 async def import_actors():
@@ -68,7 +66,7 @@ async def import_actors():
         }
     }
     """,
-    {"actors": load_dataset("movie_actors")})
+                              {"actors": load_dataset("movie_actors")})
 
 
 async def import_genres():
@@ -79,7 +77,7 @@ async def import_genres():
         }
     }
     """,
-    {"genres": load_dataset("movie_genres")})
+                              {"genres": load_dataset("movie_genres")})
 
 
 async def import_users():
@@ -90,7 +88,7 @@ async def import_users():
         }
     }
     """,
-    {"users": load_dataset("movie_users")})
+                              {"users": load_dataset("movie_users")})
 
 
 async def link_movies():
@@ -104,9 +102,8 @@ async def link_movies():
         }
     }
     """,
-    {"genres": load_dataset("movie_genres_mapping"),
-     "actors": load_dataset("movie_actors_mapping")})
-
+                              {"genres": load_dataset("movie_genres_mapping"),
+                               "actors": load_dataset("movie_actors_mapping")})
 
 
 async def import_rating_part(part):
@@ -119,8 +116,7 @@ async def import_rating_part(part):
     }
     """, {"ratings": part.tolist()})
     print('Import finished')
-    return result 
-
+    return result
 
 
 async def import_ratings():
@@ -128,24 +124,22 @@ async def import_ratings():
     partitioned = np.array_split(all_ratings, 6)
     tasks = [import_rating_part(part) for part in partitioned]
     results = await asyncio.gather(*tasks)
-    return True 
-
+    return True
 
 
 async def import_data():
     await import_movies()
     print('Imported Movies')
     await import_actors()
-    print ('Imported Actors')
+    print('Imported Actors')
     await import_genres()
-    print ('Imported Genres')
+    print('Imported Genres')
     await import_users()
-    print ('Imported Movie users')
+    print('Imported Movie users')
     await link_movies()
-    print ('Linked movies to actors and genres')
+    print('Linked movies to actors and genres')
     await import_ratings()
-    print ('Imported User ratings')
-
+    print('Imported User ratings')
 
 
 async def search_movies():
@@ -210,8 +204,6 @@ async def bad_query():
         veryBadQuery(error:"Always")
     }
     """)
-
-    
 
 
 async def main():
