@@ -121,7 +121,6 @@ def list_users():
         return f"Failed to fetch users. Status code: {response.status_code}. Response: {response.text}"
 
 
-
 # Route to logout and clear session
 @app.route('/logout')
 def logout():

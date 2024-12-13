@@ -36,7 +36,7 @@ response = eywa.graphql({'query': query, 'variables': {
         "active": True
         # "modified_on": datetime(2000, 2, 3, 4, 5, 6).isoformat()
     }
-    }}, 2)
+}}, 2)
 
 
 print('Response:\n' + str(response))

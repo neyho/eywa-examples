@@ -1,4 +1,4 @@
-# EYWA IAM + NodeJS
+# EYWA IAM + Flask
 
 For starters you will need running instance of EYWA that you can connect to. If you don't have running instance
 instructions for creating one can be found at [EYWA Core](https://github.com/neyho/eywa-core)
@@ -7,13 +7,16 @@ instructions for creating one can be found at [EYWA Core](https://github.com/ney
 #### Prerequisites
 Clone eywa-examples repo... Run:
 ```
-cd js/nodejs-oidc-demo
-npm install
+cd py/oidc-demo
+python -m venv .venv
+source .venv/bin/activate
+# Windows .venv/bin/Activate.ps1
+pip install -r requirements.txt
 ```
-This will install required dependencies like [eywa-client](https://www.npmjs.com/package/eywa-client).
+This will install required dependencies like [eywa-client](https://pypi.org/project/eywa-client/).
 
 #### Connect to running EYWA instance
-In _js/nodejs-oidc-demo_ folder create eywa.json file
+In _py/oidc-demo_ folder create eywa.json file
 ```
 Linux:     touch eywa.json
 Windows:   New-Item -Path .\eywa.json -ItemType File
@@ -28,21 +31,19 @@ or
 eywa connect http://localhost:8080
 ```
 
-#### Import React Example Client
+#### Import OIDC Test Client
 ```
-eywa run -c "node init.mjs"
+eywa run -c "python init.py"
 ```
 eywa run -c marks command that eywa client will run. By running this command, eywa client will use
 previously authorized user credentials to connect to eywa and run import.js script. import.js script
 will read from file _resources/app_react_example.json_ and send that with graphql mutation to EYWA server.
 
-In plain it will import example OAuth Client
+In plain it will import test OAuth Client
 
 
 #### Run server
 ```
-node app.js
+python app.py
 ```
-Start development environment and navigate to http://localhost:3000
-
-Congratulations, you have declared OAuth Client in EYWA IAM module. Happy coding...
+Start development environment and navigate to http://127.0.0.1:5000
