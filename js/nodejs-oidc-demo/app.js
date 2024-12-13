@@ -93,15 +93,14 @@ app.get('/logout', (req, res) => {
     return res.redirect('/');
   }
 
-  // Clear the session
-  req.session.destroy();
-
   // Get the end_session_endpoint if available from the OIDC provider
   const endSessionUrl = client.endSessionUrl({
     id_token_hint: req.session.tokenSet.id_token, // Provide the ID token for proper logout at the provider
     post_logout_redirect_uri: 'http://localhost:3000', // Redirect back after logout
   });
 
+  // Clear the session
+  req.session.destroy();
   // Redirect the user to the OIDC provider's logout endpoint
   res.redirect(endSessionUrl);
 });
@@ -112,7 +111,7 @@ function ensureAuthenticated(req, res, next) {
     // If the access token is available in the session, the user is authenticated
     return next();
   }
-  
+
   // If not authenticated, redirect to login or send an unauthorized response
   res.redirect('/auth/login');
 }
@@ -133,14 +132,16 @@ app.use('/list-users', ensureAuthenticated, async (req, res) => {
         'Content-Type': 'application/json',
       },
       data: JSON.stringify(
-      {query: `{
+        {
+          query: `{
                  searchUser {
                     euuid
                     name
                     settings
                     avatar
                  }
-      }`})});
+      }`})
+    });
 
     // Send the response back to the client
     res.status(response.status).json(response.data);

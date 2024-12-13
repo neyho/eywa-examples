@@ -4,7 +4,7 @@ import { promises as fs } from 'fs'
 
 let read_client = async () => {
   try {
-    const data = await fs.readFile('resources/app_react_example.json', 'utf8');
+    const data = await fs.readFile('resources/client.json', 'utf8');
     return JSON.parse(data)
   } catch (err) {
     return null;

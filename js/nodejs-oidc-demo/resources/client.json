@@ -1,0 +1,28 @@
+{
+  "euuid": "fd9063e0-a80f-49e4-9c46-aca58af83aa7",
+  "name": "React Example",
+  "id": "GMTXXCLYXPIJHCLYHPVZDWWARYPMVLGIKFXKFAZNIGKLIDNJ",
+  "type": "public",
+  "secret": "-55tzQoNsHYcKqxPi9SCNvLDi9eYJgMl7n3vVAsy5uXhZrFx",
+  "description": null,
+  "active": true,
+  "settings": {
+    "login-page": "",
+    "redirections": [
+      "http://localhost:3000/callback"
+    ],
+    "token-expiry": {
+      "id": 600,
+      "access": 3600,
+      "refresh": 129600
+    },
+    "allowed-grants": [
+      "authorization_code",
+      "refresh_token"
+    ],
+    "refresh-tokens": true,
+    "logout-redirections": [
+      "http://localhost:3000"
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-# EYWA IAM + React
+# EYWA IAM + NodeJS
 
 For starters you will need running instance of EYWA that you can connect to. If you don't have running instance
 instructions for creating one can be found at [EYWA Core](https://github.com/neyho/eywa-core)
@@ -7,13 +7,13 @@ instructions for creating one can be found at [EYWA Core](https://github.com/ney
 #### Prerequisites
 Clone eywa-examples repo... Run:
 ```
-cd js/react-oidc-demo
+cd js/nodejs-oidc-demo
 npm install
 ```
 This will install required dependencies like [eywa-client](https://www.npmjs.com/package/eywa-client).
 
 #### Connect to running EYWA instance
-In _js/react-oidc-demo_ folder create eywa.json file
+In _js/nodejs-oidc-demo_ folder create eywa.json file
 ```
 Linux:     touch eywa.json
 Windows:   New-Item -Path .\eywa.json -ItemType File
@@ -30,7 +30,7 @@ eywa connect http://localhost:8080
 
 #### Import React Example Client
 ```
-eywa run -c "node init.js"
+eywa run -c "node import.mjs"
 ```
 eywa run -c marks command that eywa client will run. By running this command, eywa client will use
 previously authorized user credentials to connect to eywa and run import.js script. import.js script
@@ -41,7 +41,7 @@ In plain it will import example OAuth Client
 
 #### Run server
 ```
-npm run dev
+node app.js
 ```
 Start development environment and navigate to http://localhost:5173
 
