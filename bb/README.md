@@ -1,4 +1,4 @@
-# EYWA IAM + Babashka
+# EYWA Core + Babashka
 
 For starters you will need running instance of EYWA that you can connect to. If you don't have running instance
 instructions for creating one can be found at [EYWA Core](https://github.com/neyho/eywa-core)

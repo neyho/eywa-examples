@@ -1,4 +1,4 @@
-# EYWA Core + Python
+# EYWA Core + NodeJS
 
 For starters you will need running instance of EYWA that you can connect to. If you don't have running instance
 instructions for creating one can be found at [EYWA Core](https://github.com/neyho/eywa-core)
@@ -7,18 +7,14 @@ instructions for creating one can be found at [EYWA Core](https://github.com/ney
 #### Prerequisites
 Clone eywa-examples repo... Run:
 ```
-cd py/scripting
-python -m venv .venv
-source .venv/bin/activate
-# Windows .venv/bin/Activate.ps1
-pip install -r requirements.txt
-
+cd js/scripting
+npm install
 ```
-This will install required dependencies like [eywa-client](https://pypi.org/project/eywa-client/).
+This will install required dependencies.
 
 
 #### Connect to running EYWA instance
-In _py/react-oidc-demo_ folder create eywa.json file
+In _js/react-oidc-demo_ folder create eywa.json file
 ```
 Linux:     touch eywa.json
 Windows:   New-Item -Path .\eywa.json -ItemType File
@@ -29,9 +25,7 @@ you can interact with EYWA through scripts.
 
 ```
 eywa connect https://some.running.instance
-```
 or
-```
 eywa connect http://localhost:8080
 ```
 
@@ -41,12 +35,11 @@ eywa connect http://localhost:8080
 deployed dataset with fake data for entities and releations by running following commands:
 
 ```
-eywa run -c "python movies.py deploy"
-eywa run -c "python movies.py import"
-eywa run -c "python movies.py show_movies"
-eywa run -c "python movies.py show_actors"
-eywa run -c "python movies.py delete"
-eywa run -c "python movies.py error"
+eywa run -c "node movies.js deploy"
+eywa run -c "node movies.js import"
+eywa run -c "node movies.js test"
+eywa run -c "node movies.js error"
+eywa run -c "node movies.js delete"
 ```
 
 

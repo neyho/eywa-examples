@@ -197,6 +197,17 @@ const import_ratings = async () => {
         console.log('Received result:\n')
         console.log(JSON.stringify(response, null, 2))
         break
+      case "error":
+        try {
+          await eywa.graphql(`
+    {
+        veryBadQuery(error:"Always")
+    }
+`)
+        } catch (error) {
+          console.error("Couldn't execute", error)
+        }
+        break
       default:
         console.log(
           `

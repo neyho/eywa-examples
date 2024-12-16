@@ -3,6 +3,7 @@ import asyncio
 import json
 import numpy as np
 import sys
+import pprint
 
 
 async def search_users():
@@ -219,9 +220,9 @@ async def main():
         await import_data()
         print("Imported Movies data")
     elif action == "show_movies":
-        print(await search_movies())
+        print(pprint.pprint(await search_movies()))
     elif action == "show_actors":
-        print(await search_actors())
+        print(pprint.pprint(await search_actors()))
     elif action == "error":
         print(await bad_query())
     else:

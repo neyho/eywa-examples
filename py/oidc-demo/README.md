@@ -27,7 +27,9 @@ you can interact with EYWA through scripts.
 
 ```
 eywa connect https://some.running.instance
+```
 or
+```
 eywa connect http://localhost:8080
 ```
 
@@ -47,3 +49,13 @@ In plain it will import test OAuth Client
 python app.py
 ```
 Start development environment and navigate to http://127.0.0.1:5000
+
+
+#### Hint
+It is also possible to run app.py and have it connected to EYWA by running:
+```
+eywa run -c "python app.py"
+```
+
+This gives you both ability to run python server that uses EYWA IAM, as well
+as ability to interact with eywa through eywa-client
