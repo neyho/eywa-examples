@@ -18,7 +18,7 @@ In _js/react-oidc-demo_ folder create eywa.json file
 Linux:     touch eywa.json
 Windows:   New-Item -Path .\eywa.json -ItemType File
 ```
-Running ```eywa connect``` will start Device Code Flow authorization, and
+Running ```eywa connect``` will start Device Code Flow authentication, and
  will require from you to authenticate on EYWA IAM module. When authenticated,
 you can interact with EYWA through scripts.
 
@@ -33,7 +33,7 @@ eywa connect http://localhost:8080
 eywa run -c "bb nrepl-server"
 ```
 eywa run -c marks command that eywa client will run. By running this command, eywa client will use
-previously authorized user credentials to connect to EYWA server and run command wrapped in new process.
+previously authenticated user credentials to connect to EYWA server and run command wrapped in new process.
 
 This will work fine for above situation, where nrepl-server is started, but it won't work for classic
 command line repl. Like starting ```clj``` won't work.
