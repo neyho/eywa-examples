@@ -19,26 +19,7 @@
 (defn clean []
   (b/delete {:path "target"}))
 
-; (def exclude-uber-basis-pattern #"src.*$")
-
-; (def uber-basis
-;   (update basis :libs
-;           (fn [libs]
-;             (reduce-kv
-;              (fn [libs lib context]
-;                (if (contains? context :local/root)
-;                  (update-in libs [lib :paths]
-;                             (fn [paths]
-;                               (vec
-;                                (remove
-;                                 (fn [path]
-;                                   (re-find exclude-uber-basis-pattern path))
-;                                 paths))))
-;                  libs))
-;              libs
-;              libs))))
-
-(defn compile
+(defn compile-example
   [& _]
   (b/write-pom {:class-dir class-dir
                 :lib lib
@@ -72,5 +53,5 @@
 
 (defn all [& _]
   (clean)
-  (compile)
+  (compile-example)
   (uber))

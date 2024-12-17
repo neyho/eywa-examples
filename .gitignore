@@ -1,4 +1,5 @@
 node_modules/
+clojure/target/
 .DS_Store
 .shadow-cljs/
 .cpcache
@@ -11,4 +12,3 @@ node_modules/
 .clj-kondo
 eywa.json
 eywa.edn
-
