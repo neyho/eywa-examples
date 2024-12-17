@@ -118,10 +118,16 @@
   [& [command]]
   (log/info "Starting EXAMPLE EYWA service")
   (case command
+    "setup" (do
+              (core/initialize)
+              (System/exit 0))
     "init" (do
              (core/warmup)
              (movies/all)
              (System/exit 0))
+    "teardown " (do
+                  (core/tear-down)
+                  (System/exit 0))
     (do
       (core/start)
       (log/info "Adding 'example.graphql' shard")

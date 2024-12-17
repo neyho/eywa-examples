@@ -1,7 +1,7 @@
 # Extending EYWA Core with Clojure
 
-EYWA Core offers Data Modeling through UI and deploying those datasets
-to DB with out of the box interface exposing GraphQL generic methods.
+EYWA Core offers Data Modeling through UI and deploying modeled datasets
+to DB with out of the box interface exposing throught generic GraphQL methods.
 
 What to do when that is not enough? What if frontend requires backend state
 value(i.e. atom, ref)? Can I extend GraphQL schema and how can i do it?
@@ -50,6 +50,7 @@ it is possible to run segments from command line directly. If using
 
 Otherwise:
 ```
+clj -m examples.main "setup" # only once to setup EYWA Core
 clj -m examples.main "init"
 clj -m examples.main
 ```
@@ -69,4 +70,3 @@ java -jar target/example.jar
 
 ### Leiningen
 PRs welcome!
-
