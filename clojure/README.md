@@ -45,7 +45,7 @@ Adjust values to target PostgreSQL server.
 ### tools.deps.alpha
 Recommended way to explore this repo is by using repl or nrepl, but
 it is possible to run segments from command line directly. If using
-(n)repl, please focus on examples.main namespace. Follow comments...
+(n)repl, please focus on _examples.main_ namespace. Follow comments...
 
 
 Otherwise:
@@ -53,6 +53,7 @@ Otherwise:
 clj -m examples.main "setup" # only once to setup EYWA Core
 clj -m examples.main "init"
 clj -m examples.main
+# clj -m examples.main "teardown" # this will drop POSTGRES_DB from Postgres server
 ```
 
 
@@ -63,8 +64,10 @@ clj -T:build all
 
 Run jar:
 ```
+java -jar target/example.jar "setup"
 java -jar target/example.jar "init"
 java -jar target/example.jar
+java -jar target/example.jar "teardown"
 ```
 
 
