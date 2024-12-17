@@ -1,0 +1,53 @@
+type Query {
+  counterState: Int
+  @resolve(fn: "examples.main/get-counter")
+
+  """This query will return actors ordered by avg movie rating in descending order."""
+  bestActors(limit:Int):[RatedActor]
+  @resolve(fn: "examples.main/best-actors")
+
+
+  "This query will return movies ordered by avg rating"
+  bestMovies(limit:Int):[RatedMovie]
+  @resolve(fn: "examples.main/best-movies")
+}
+
+
+type RatedActor {
+  euuid: UUID
+  name: String
+  rating: Float
+}
+
+type RatedMovie  {
+  euuid: UUID
+  title: String
+  rating: Float
+  ratings: Int
+}
+
+
+type User {
+  counter: Int
+  @resolve(fn: "examples.main/extend-counter")
+}
+
+
+type Mutation {
+  increaseCounter:Int
+  @resolve(fn: "examples.main/inc-counter")
+
+
+  decreaseCounter:Int
+  @resolve(fn: "examples.main/dec-counter")
+
+
+  resetCounter:Int
+  @resolve(fn: "examples.main/reset-counter")
+}
+
+
+type Subscription {
+  counterListener:Int
+  @resolve(fn: "examples.main/counter-subscription")
+}

@@ -1,0 +1,13 @@
+{:mvn/repos {"rpl"     {:url "https://nexus.redplanetlabs.com/repository/maven-public-releases"}
+             "central" {:url "https://repo1.maven.org/maven2/"}
+             "clojars" {:url "https://repo.clojars.org/"}}
+ :deps
+ {;org.neyho/eywa-core {:mvn/version "0.3.2"}}
+  org.neyho/eywa-core   {:local/root "../.."}
+  org.neyho/eywa-client {:mvn/version "0.1.0"}
+  com.github.gersak/toddler-graphql {:mvn/version "0.1.0"}}
+ ;;
+ :paths ["src" "resources"]
+ :aliases
+ {:dev
+  {:extra-paths ["dev"]}}}

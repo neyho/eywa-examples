@@ -11,7 +11,7 @@ async def search_users():
     searchUser (_limit:2000) {
       euuid
       name
-      type      
+      type
     }
     }""")
 
@@ -169,7 +169,7 @@ async def search_movies():
           birth_year
         }
       }
-    } 
+    }
     """)
 
 
@@ -195,7 +195,7 @@ async def search_actors():
           }
         }
       }
-    } 
+    }
     """)
 
 
