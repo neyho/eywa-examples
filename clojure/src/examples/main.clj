@@ -2,10 +2,14 @@
   (:require
    [neyho.eywa]
    [clojure.java.io :as io]
+   [clojure.tools.logging :as log]
+   [clojure.core.async]
    [neyho.eywa.core :as core]
+   [neyho.eywa.server]
    [neyho.eywa.dataset.sql.compose :as compose]
    [neyho.eywa.lacinia :as lacinia]
-   [examples.movies :as movies]))
+   [examples.movies :as movies])
+  (:gen-class :main true))
 
 (defonce counter (atom nil))
 
@@ -83,13 +87,22 @@
   (compose/execute! (compose/prepare ::best-movies data)))
 
 (defn -main
-  [& _]
-  (core/start)
-  (lacinia/add-shard ::example (slurp (io/resource "example.graphql"))))
+  [& [command]]
+  (log/info "Starting EXAMPLE EYWA service")
+  (case command
+    "init" (do
+             (core/warmup)
+             (movies/all)
+             (System/exit 0))
+    (do
+      (core/start)
+      (log/info "Adding 'example.graphql' shard")
+      (lacinia/add-shard ::example (slurp (io/resource "example.graphql"))))))
 
 (comment
   ;; Initialize
 
+  (require '[examples.movies :as movies])
   (movies/all)
 
   ;; To clean DB of movie models use my.eywaonline.com UI

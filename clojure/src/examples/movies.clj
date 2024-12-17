@@ -25,7 +25,7 @@
   (dataset/deploy! (<-transit (slurp "../datasets/Movies_Example_0_2.json"))))
 
 (defn all
-  []
+  [& _]
   (deploy-dataset)
   (doseq [[entity dataset] [[-movie- "movies"]
                             [-actor- "movie_actors"]
