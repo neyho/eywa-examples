@@ -1,7 +1,7 @@
 # Extending EYWA Core with Clojure
 
 EYWA Core offers Data Modeling through UI and deploying modeled datasets
-to DB with out of the box interface exposing throught generic GraphQL methods.
+to DB with out of the box interface exposed throught generic GraphQL methods.
 
 What to do when that is not enough? What if frontend requires backend state
 value(i.e. atom, ref)? Can I extend GraphQL schema and how can i do it?
@@ -12,9 +12,9 @@ queries and mutations, as well as extending deployed entity fields with custom
 fields and defining resolvers for those fields through graphql schema.
 
 Subscription? What about that? Sure, it is explained here in this project,
-as well as how to build uberjar. This project may be as best practice 
-usage of EYWA Core (and it will be extendend in the future to cover less
-common situations).
+as well as how to build uberjar. This project highlights EYWA Core features
+ and dynamic nature by covering most common use cases (it will be extendend
+in the future to cover less common situations).
 
 
 #### Install [Clojure](https://clojure.org/guides/install_clojure)
