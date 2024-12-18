@@ -29,7 +29,7 @@ Otherwise:
 ```
 export POSTGRES_HOST=localhost
 export POSTGRES_PORT=5432
-export POSTGRES_DB=eywa_dev
+export POSTGRES_DB=eywa_movies_example
 export POSTGRES_USER=postgres
 export POSTGRES_PASSWORD=password
 
@@ -64,12 +64,23 @@ clj -T:build all
 
 Run jar:
 ```
-java -jar target/example.jar "setup"
-java -jar target/example.jar "init"
+java -jar target/example.jar setup
+java -jar target/example.jar init
 java -jar target/example.jar
-java -jar target/example.jar "teardown"
+# java -jar target/example.jar teardown
 ```
 
 
 ### Leiningen
 PRs welcome!
+
+
+### Hack
+Navigate to https://my.eywaonline.com and login to your local
+running instance. Open https://my.eywaonline.com/data/graphql
+to test extended GraphQL queries, mutations and subscriptions.
+
+```
+Username: admin
+Password: admin
+```

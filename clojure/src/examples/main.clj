@@ -96,7 +96,7 @@
 (defmethod compose/prepare [::best-movies neyho.eywa.Postgres]
   [_ {:keys [limit]}]
   [(compose/ml
-    (format "select movie._eid, movie.title , avg(ratings.value) rating, count (ratings.value) ratings from %s as movie" (compose/table movie))
+    (format "select movie._eid, movie.euuid, movie.title , avg(ratings.value) rating, count (ratings.value) ratings from %s as movie" (compose/table movie))
     (compose/relation-join
      {:entity movie
       :label :movie_ratings
@@ -120,14 +120,17 @@
   (case command
     "setup" (do
               (core/initialize)
+              (core/set-superuser
+               {:username "admin"
+                :password "admin"})
               (System/exit 0))
     "init" (do
              (core/warmup)
              (movies/all)
              (System/exit 0))
-    "teardown " (do
-                  (core/tear-down)
-                  (System/exit 0))
+    "teardown" (do
+                 (core/tear-down)
+                 (System/exit 0))
     (do
       (core/start)
       (log/info "Adding 'example.graphql' shard")
