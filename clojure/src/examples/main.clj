@@ -65,7 +65,7 @@
 ;; Declaration of entity uuids... Tip: It is possible to copy
 ;; UUID from my.eywaonline.com/data/modeling UI, by selecting
 ;; Entity and clicking on barcode in opened drawer. In general
-;; wherever ther is barcode, you can copy EUUID
+;; wherever there is barcode, you can copy EUUID
 (def movie-actor #uuid "f274cee0-681f-48d5-a67d-b0232f456f86")
 (def movie #uuid "607556f6-8eaa-4089-a438-70aa91cd96e0")
 (def user-rating #uuid "43056d28-e652-49a9-9276-70abb7019785")

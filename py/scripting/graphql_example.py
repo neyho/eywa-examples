@@ -1,59 +1,26 @@
 import eywa
-from datetime import datetime
+import asyncio
+import json
+import numpy as np
+import sys
+import pprint
 
 
-query = """
-{
-  searchPermission {
-    euuid
-    name
-  }
-}
-"""
-
-
-response = eywa.graphql({'query': query})
-print('Response:\n' + str(response))
-
-
-query = """
-mutation ($group:UserGroupInput!) {
-  syncUserGroup (user_group: $group) {
-    euuid
-    active
-    modified_on
-    modified_by {
+async def search_users():
+    return await eywa.graphql("""{
+    searchUser (_limit:2000) {
+      euuid
       name
+      type
     }
-  }
-}
-"""
+    }""")
 
 
-response = eywa.graphql({'query': query, 'variables': {
-    "group": {
-        "name": "Test Grup",
-        "active": True
-        # "modified_on": datetime(2000, 2, 3, 4, 5, 6).isoformat()
-    }
-}}, 2)
+async def main():
+    eywa.open_pipe()
+    users = await search_users()
+    print("Users\n" + str(users))
+    eywa.exit()
 
 
-print('Response:\n' + str(response))
-
-
-query = """
-{
-  searchUserGroup {
-    euuid
-    active
-    modified_on
-    modified_by {
-      name
-    }
-  }
-}
-"""
-
-response = eywa.graphql({'query': query})
-print('Response:\n' + str(response))
+asyncio.run(main())

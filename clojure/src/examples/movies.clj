@@ -52,16 +52,16 @@
   ;; To build up database
   (core/initialize db)
 
-;; Add new superuser
+  ;; Add new superuser
   (core/set-superuser
    db
    {:username "admin"
     :password "admin"})
 
-;; Starts EYWA Core server
+  ;; Starts EYWA Core server
   (core/start db)
 
-;; Import data
+  ;; Import data
   (time (all))
 
   ;; navigate ot https://my.eywaonline.com/

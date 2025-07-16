@@ -50,7 +50,7 @@ def load_dataset(name):
 async def import_movies():
     return await eywa.graphql("""
     mutation($movies:[MovieInput]) {
-        syncMovieList(movie:$movies) {
+        syncMovieList(data:$movies) {
             euuid
             title
         }
@@ -62,7 +62,7 @@ async def import_movies():
 async def import_actors():
     return await eywa.graphql("""
     mutation($actors:[MovieActorInput]) {
-        syncMovieActorList(movie_actor:$actors) {
+        syncMovieActorList(data:$actors) {
             euuid
         }
     }
@@ -73,7 +73,7 @@ async def import_actors():
 async def import_genres():
     return await eywa.graphql("""
     mutation($genres:[MovieGenreInput]) {
-        syncMovieGenreList(movie_genre:$genres) {
+        syncMovieGenreList(data:$genres) {
             euuid
         }
     }
@@ -84,7 +84,7 @@ async def import_genres():
 async def import_users():
     return await eywa.graphql("""
     mutation($users:[MovieUserInput]) {
-        syncMovieUserList(movie_user:$users) {
+        syncMovieUserList(data:$users) {
             euuid
         }
     }
@@ -95,10 +95,10 @@ async def import_users():
 async def link_movies():
     return await eywa.graphql("""
     mutation($genres:[MovieGenreInput] $actors:[MovieActorInput]) {
-        syncMovieGenreList(movie_genre:$genres) {
+        syncMovieGenreList(data:$genres) {
             euuid
         }
-        syncMovieActorList(movie_actor:$actors) {
+        syncMovieActorList(data:$actors) {
             euuid
         }
     }
@@ -111,7 +111,7 @@ async def import_rating_part(part):
     print(f'Importing {len(part)} user ratings!')
     result = await eywa.graphql("""
     mutation($ratings:[UserRatingInput]) {
-        syncUserRatingList(user_rating:$ratings) {
+        syncUserRatingList(data:$ratings) {
             euuid
         }
     }

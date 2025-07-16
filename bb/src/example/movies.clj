@@ -122,6 +122,14 @@
 
 (comment
   (eywa/start)
+  (println "HI")
+  (println
+   (async/<!!
+    (eywa/graphql
+     {:query (graphql/queries
+              [{:query :searchUser
+                :selection {:euuid nil
+                            :name nil}}])})))
 
   (deploy-movie-model)
   (load-datasets)
