@@ -1,5 +1,4 @@
 {:deps
- {org.neyho/eywa-client             {;:local/root "../clients/bb"
-                                     :mvn/version "0.1.0-SNAPSHOT"}
+ {org.neyho/eywa-client             {:mvn/version "0.3.0"}
   com.github.gersak/toddler-graphql {:mvn/version "0.1.0"}}
  :paths ["src"]}

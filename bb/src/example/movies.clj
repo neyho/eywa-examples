@@ -29,32 +29,32 @@
     (time
      (let [mutations [{:mutation :syncMovieList
                        :selection {:euuid nil}
-                       :types {:movie :MovieInput}
-                       :variables {:movie (<-json (slurp-dataset "movies"))}}
+                       :types {:data :MovieInput}
+                       :variables {:data (<-json (slurp-dataset "movies"))}}
                       {:mutation :syncMovieActorList
                        :alias "actors"
                        :selection {:euuid nil}
-                       :types {:movie_actor :MovieActorInput}
-                       :variables {:movie_actor (<-json (slurp-dataset "movie_actors"))}}
+                       :types {:data :MovieActorInput}
+                       :variables {:data (<-json (slurp-dataset "movie_actors"))}}
                       {:mutation :syncMovieGenreList
                        :selection {:euuid nil}
                        :alias "genres"
-                       :types {:movie_genre :MovieGenreInput}
-                       :variables {:movie_genre (<-json (slurp-dataset "movie_genres"))}}
+                       :types {:data :MovieGenreInput}
+                       :variables {:data (<-json (slurp-dataset "movie_genres"))}}
                       {:mutation :syncMovieUserList
                        :selection {:euuid nil}
-                       :types {:movie_user :MovieUserInput}
-                       :variables {:movie_user (<-json (slurp-dataset "movie_users"))}}
+                       :types {:data :MovieUserInput}
+                       :variables {:data (<-json (slurp-dataset "movie_users"))}}
                       {:mutation :syncMovieActorList
                        :alias "actors_mapping"
                        :selection {:euuid nil}
-                       :types {:movie_actor :MovieActorInput}
-                       :variables {:movie_actor (<-json (slurp-dataset "movie_actors_mapping"))}}
+                       :types {:data :MovieActorInput}
+                       :variables {:data (<-json (slurp-dataset "movie_actors_mapping"))}}
                       {:mutation :syncMovieGenreList
                        :alias "genres_mapping"
                        :selection {:euuid nil}
-                       :types {:movie_genre :MovieGenreInput}
-                       :variables {:movie_genre (<-json (slurp-dataset "movie_genres_mapping"))}}]]
+                       :types {:data :MovieGenreInput}
+                       :variables {:data (<-json (slurp-dataset "movie_genres_mapping"))}}]]
        (eywa/graphql (graphql/mutations mutations))))
     (doseq [part (partition-all 10000 (<-json (slurp-dataset "user_ratings")))]
       (println "Importing ratings...")
@@ -63,8 +63,8 @@
         (eywa/graphql
          (graphql/mutations
           [{:mutation :syncUserRatingList
-            :types {:user_rating :UserRatingInput}
-            :variables {:user_rating part}
+            :types {:data :UserRatingInput}
+            :variables {:data part}
             :selection {:euuid nil}}])))))
     (println "Data importing finished!")))
 
@@ -117,14 +117,14 @@
     "delete" (async/<!! (delete-movies))
     "show" (pprint
             (time
-             (async/<!!
+             (async/<!
               (eywa/graphql {:query (statistics-query {:title "enhanced"})}))))))
 
 (comment
   (eywa/start)
   (println "HI")
   (println
-   (async/<!!
+   (async/<!
     (eywa/graphql
      {:query (graphql/queries
               [{:query :searchUser

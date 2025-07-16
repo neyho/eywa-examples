@@ -46,7 +46,7 @@ const import_movies = async () => {
   const data = await read_dataset("movies")
   await eywa.graphql(`
   mutation($movies:[MovieInput]) {
-        syncMovieList(movie:$movies) {
+        syncMovieList(data:$movies) {
             euuid
             title
         }
@@ -60,7 +60,7 @@ const import_actors = async () => {
   const data = await read_dataset("movie_actors")
   await eywa.graphql(`
 mutation($actors:[MovieActorInput]) {
-        syncMovieActorList(movie_actor:$actors) {
+        syncMovieActorList(data:$actors) {
             euuid
         }
     }`, { actors: data })
@@ -72,7 +72,7 @@ const import_genres = async () => {
   const data = await read_dataset("movie_genres")
   await eywa.graphql(`
 mutation($genres:[MovieGenreInput]) {
-        syncMovieGenreList(movie_genre:$genres) {
+        syncMovieGenreList(data:$genres) {
             euuid
         }
     }`, { genres: data })
@@ -84,7 +84,7 @@ const import_users = async () => {
   const data = await read_dataset("movie_users")
   await eywa.graphql(`
 mutation($users:[MovieUserInput]) {
-        syncMovieUserList(movie_user:$users) {
+        syncMovieUserList(data:$users) {
             euuid
         }
     }`, { users: data })
@@ -97,10 +97,10 @@ const link_movies = async () => {
   const actors = read_dataset("movie_actors_mapping")
   await eywa.graphql(`
 mutation($genres:[MovieGenreInput] $actors:[MovieActorInput]) {
-        syncMovieGenreList(movie_genre:$genres) {
+        syncMovieGenreList(data:$genres) {
             euuid
         }
-        syncMovieActorList(movie_actor:$actors) {
+        syncMovieActorList(data:$actors) {
             euuid
         }
     }`,
@@ -115,7 +115,7 @@ const import_rating_part = async (part) => {
   console.log('importing rating part')
   await eywa.graphql(`
   mutation($ratings:[UserRatingInput]) {
-          syncUserRatingList(user_rating:$ratings) {
+          syncUserRatingList(data:$ratings) {
               euuid
           }
       }
